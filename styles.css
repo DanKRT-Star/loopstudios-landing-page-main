@@ -1,0 +1,410 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --White: hsl(0, 0%, 100%);
+    --Black: hsl(0, 0%, 0%);
+    --Grey-200: hsl(0, 0%, 85%);
+}
+
+body {
+    height: 100vh;
+    overflow: auto;
+    font-family: 'Alata', sans-serif, system-ui;
+    font-weight: 400;
+
+    a {
+        position: relative;
+        text-decoration: none;
+        color: var(--White);
+        cursor: pointer;
+    }
+
+    a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -5px;
+        height: 2px;
+        background: var(--White);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+    }
+
+    a:hover::after,
+    a:focus::after,
+    a:active::after {
+        transform: scaleX(1);
+    }
+
+    a:focus {
+        outline: none;
+    } 
+
+    ul {
+        list-style: none;
+        display: flex;
+    }
+
+    h1, h2 {
+        font-family: 'Josefin Sans', sans-serif, system-ui;
+        font-weight: 300;
+        text-transform: uppercase;
+        color: var(--Black);
+    }
+
+    button {
+        background-color: transparent;
+        border: none;
+    }
+}
+
+
+
+header {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    padding: 30px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo, .open_menu {
+        height: 1.3rem;
+        z-index: 3;
+    }
+
+    nav {
+        position: fixed;
+        background-color: var(--Black);
+        z-index: 2;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        opacity: 0;
+        translate: 100% 0;
+        transition: all 0.3s ease;
+
+        .menu {
+            font-family: 'Josefin Sans', sans-serif, system-ui;
+            flex-direction: column;
+            font-size: 1.5rem;
+            font-weight: 300;
+            gap: 20px;
+            color: var(--Grey-200);
+            text-transform: uppercase;
+        }
+    }
+}
+
+header.open {
+    position: fixed;
+
+    nav {
+        translate: 0 0;
+        opacity: 1;
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    section {
+
+        img {
+            object-fit: cover;
+            width: 100%;
+        }
+    }
+
+    #about {
+        position: relative;
+
+        .title {
+            position: absolute;
+            border: solid 2px var(--Grey-200);
+            color: var(--Grey-200);
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            font-size: 2.3rem;
+            padding: 10px;
+        }
+    }
+
+    #careers, #products {
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #careers {
+        .info {
+            background-color: var(--White);
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+    }
+
+    #products {
+        > .title {
+            margin-bottom: 20px;
+        }
+
+        .projects {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            .project {
+                position: relative;
+                cursor: pointer;
+
+                .poster {
+                    display: block;
+                    transition: 0.3s ease;
+                }
+
+                > .title {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 55%;
+                    height: 100%;
+                    text-align: left;
+                    color: var(--Grey-200);
+                    display: flex;
+                    align-items: flex-end;
+                    padding: 10px ;
+                    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+                    transition: 0.3s ease;
+                }
+            }  
+            
+            .project:hover,
+            .project:focus,
+            .project:active {
+                .poster {
+                    opacity: 0.4;
+                }
+
+                > .title {
+                    font-weight: 400;
+                    color: var(--Black);
+                    background: transparent;
+                }
+            }
+        }
+
+        .see_all {
+            text-transform: uppercase;
+            border: solid 1px var(--Black);
+            width: fit-content;
+            font-family: inherit;
+            letter-spacing: 2px;
+            font-size: inherit;
+            padding: 5px 30px;
+            margin: 10px 0 50px 0;
+            transition: 0.3s ease;
+            cursor: pointer;
+        }
+
+        .see_all:hover,
+        .see_all:focus,
+        .see_all:active {
+            background-color: var(--Black);
+            color: var(--White);
+        }
+    }
+}
+
+footer {
+    background-color: var(--Black);
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+
+    .logo_and_navbar {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        > .logo {
+            height: 1.3rem;
+            
+        }
+        
+        .menu {
+            display: flex;
+            flex-direction: column;
+            font-family: 'Josein Sans', sans-serif, system-ui;
+            font-weight: 300;
+            font-size: 0.85rem;
+            gap: 20px;
+        }
+    }
+
+    .contact_and_credit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+
+        .contact_methods {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        > p {
+            color: var(--Grey-200);
+        }
+    }
+}
+
+@media screen and (min-width: 768px){
+
+    header {
+        padding: 50px 100px;
+
+        .open_menu {
+            display: none;
+        }
+
+        nav {
+            translate: 0 0;
+            opacity: 1;
+            position: static;
+            background-color: transparent;
+
+            .menu {
+                flex-direction: row;
+                text-transform: none;
+                font-size: 1rem;
+                justify-content: flex-end;
+                font-weight: 400;
+            }
+        }
+    }
+
+    main {
+        gap: 0;
+        
+        #about {
+            .title {
+                font-size: 3rem;
+                width: 40%;
+                top: unset;
+                left: 100px;
+                bottom: 70px;
+                translate: 0 0;
+                padding: 20px 30px;
+            }
+        }
+
+        #careers, #products {
+            padding: 100px 100px 0 100px;
+            align-items: flex-start;
+        }
+
+
+        #careers {
+            position: relative;
+            text-align: left;
+            
+
+            .image {
+                width: 60%;
+            }
+
+            .info {
+                padding: 70px 50px 0 70px;
+                position: absolute;
+                width: 50%;
+                right: 50px;
+                bottom: 0;
+                justify-content: flex-end;
+            }
+        }
+
+        #products {
+            position: relative;
+            margin-bottom: 100px;
+
+            .projects {
+                flex-direction: row;
+                flex-wrap: wrap;
+
+                .project {
+                    width: calc(100% / 4 - 15px);
+
+                    .title {
+                        padding: 30px;
+                    }
+                }
+            }
+
+            .see_all {
+                position: absolute;
+                top: 100px;
+                right: 100px;
+                margin: 0;
+                
+            }
+        }
+    }
+
+    footer {
+        padding: 50px 100px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        .logo_and_navbar {
+            gap: 30px;
+
+            > .logo {
+                width: 50%;
+                height: 28px;
+            }
+
+            .menu {
+                flex-direction: row;
+                gap: 30px;
+            }
+        }
+
+        .contact_and_credit {
+            gap: 30px;
+            align-items: flex-end;
+            
+        }
+    }
+}
+
+
+
+
+
